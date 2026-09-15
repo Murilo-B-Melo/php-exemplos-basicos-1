@@ -42,9 +42,17 @@
         // Fecha o arquivo
         fclose($arquivo);
 
-        // Mensagem de sucesso (Feedback visual para o usuário)
-        echo"<p>Usuário cadastrado com sucesso!</php>";
+        //Redireciona para a própria página após o cadastro
+        header("Location: " . $_SERVER['PHP_SELF'] . '?sucesso=1');
+        exit;
+         }
+         
+    if (isset($_GET['sucesso'])) {
+        //Mensagem de sucesso (Feedback para o usuário)
+        echo "<p>Usuário cadastrado com sucesso!</p>";
 
+    // Atualiza a página após 5 segundos (Força a mensagem a sumir)
+        header('Refresh: 5; url=' . $_SERVER['PHP_SELF']);
     }
     ?>
 </body>
